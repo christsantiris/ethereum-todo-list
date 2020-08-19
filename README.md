@@ -12,4 +12,4 @@
 ### properties of the smart contract can be viewed by `todolist.taskCount()` or `todolist.address`
 
 ### To see tasks deployed to the block: 
-### `task = await todoList.tasks(1)`
+### `task = await todoList.tasks(1)` and to see information about the task i.e `task.id.toNumber()` or `task.content`
