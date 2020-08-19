@@ -2,6 +2,7 @@ App = {
   load: async () => {
     await App.loadWeb3()
     await App.loadAccount()
+    await App.loadContract()
   },
 
   loadWeb3: async () => {
@@ -39,7 +40,10 @@ App = {
   loadAccount: async () => {
     // get first account from ganache
     App.account = web3.eth.accounts[0]
-    console.log(App.account);
+  },
+  loadContract: async () => {
+    const todoList = await $.getJSON('TodoList.json')
+    console.log(todoList)
   }
 }
 

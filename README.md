@@ -13,3 +13,9 @@
 
 ### To see tasks deployed to the block: 
 ### `task = await todoList.tasks(1)` and to see information about the task i.e `task.id.toNumber()` or `task.content`
+
+## To Connect via Meta Mask
+### Get private key to account from Ganache by clicking key icon and copying it
+### Open Metamask go to settings > network > add network ! and there add your new network if it's a local node in RPC URL put: http://127.0.0.1:7545 and chose a name for it and save 
+### Select the newly createe account from dropdown to connect
+### In Meta Mask go to Accounts > Import Account and add the private key from Ganache
