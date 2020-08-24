@@ -19,3 +19,6 @@
 ### Open Metamask go to settings > network > add network ! and there add your new network if it's a local node in RPC URL put: http://127.0.0.1:7545 and chose a name for it and save 
 ### Select the newly createe account from dropdown to connect
 ### In Meta Mask go to Accounts > Import Account and add the private key from Ganache
+
+## To run unit tests
+### `truffle test`

@@ -84,7 +84,7 @@ App = {
       $newTaskTemplate.find('.content').html(taskContent)
       $newTaskTemplate.find('input')
                       .prop('name', taskId)
-                      .prop('checked', taskContent)
+                      .prop('checked', taskCompleted)
                       .on('click', App.toggleCompleted)
       // Sort the tasks into correct lists based on completed status
       if (taskCompleted) {
