@@ -43,6 +43,7 @@ App = {
     // get first account from ganache
     App.account = web3.eth.accounts[0]
   },
+
   loadContract: async () => {
     // Create JS version of smart contract
     const todoList = await $.getJSON('TodoList.json')
@@ -51,6 +52,7 @@ App = {
     // Get values from the blockchain for the smart contract
     App.todoList = await App.contracts.TodoList.deployed()
   },
+
   render: async () => {
 
     if (App.loading) {
@@ -60,8 +62,41 @@ App = {
 
     $('#account').html(App.account)
 
+    await App.renderTasks()
+
     App.setLoading(false)
   },
+
+  renderTasks: async () => {
+    // Load task count from the blockchain
+    const taskCount = await App.todoList.taskCount()
+    const $taskTemplate = $('.taskTemplate')
+
+    for (var i = 1; i <= taskCount; i++) {
+      // Fetch task data from the blockchain
+      const task = await App.todoList.tasks(i)
+      const taskId = task[0].toNumber()
+      const taskContent = task[1]
+      const taskCompleted = task[2]
+
+      // Create the html for the task
+      const $newTaskTemplate = $taskTemplate.clone()
+      $newTaskTemplate.find('.content').html(taskContent)
+      $newTaskTemplate.find('input')
+                      .prop('name', taskId)
+                      .prop('checked', taskContent)
+                      .on('click', App.toggleCompleted)
+      // Sort the tasks into correct lists based on completed status
+      if (taskCompleted) {
+        $('#completedTaskList').append($newTaskTemplate)
+      } else {
+        $('#taskList').append($newTaskTemplate)
+      }
+      // Show the tasks
+      $newTaskTemplate.show()
+    }
+  },
+
   setLoading: (boolean) => {
     App.loading = boolean
     const loader = $('#loader')
