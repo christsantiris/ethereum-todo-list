@@ -52,7 +52,27 @@ App = {
     App.todoList = await App.contracts.TodoList.deployed()
   },
   render: async () => {
+
+    if (App.loading) {
+      return
+    }
+    App.setLoading(true)
+
     $('#account').html(App.account)
+
+    App.setLoading(false)
+  },
+  setLoading: (boolean) => {
+    App.loading = boolean
+    const loader = $('#loader')
+    const content = $('#content')
+    if (boolean) {
+      loader.show()
+      content.hide()
+    } else {
+      loader.hide()
+      content.show()
+    }
   }
 }
 
