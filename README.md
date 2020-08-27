@@ -22,3 +22,6 @@
 
 ## To run unit tests
 ### `truffle test`
+
+## When adding new functions to the blockchain: 
+### Run `truffle migrate --reset` to deploy a new copy of the smart contract
