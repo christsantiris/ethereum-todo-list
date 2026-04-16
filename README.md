@@ -1,27 +1,53 @@
-## ToDo List App Using Ethereum Smart Contracts and Solidity
-### To intialize a new blockchain project
-### `truffle init` then `npm i` and run Ganache and MetaMask
+# ToDo List App — Ethereum Smart Contracts & Solidity
 
-### To compile the project: `truffle compile`
+---
 
-### To deploy to the blockchain: `truffle migrate`
+## 🚀 Getting Started
+```bash
+truffle init   # Initialize a new blockchain project
+npm i          # Install dependencies
+```
 
-### To open truffle console: `truffle console`
-### To view the generated smart contract: `todolist = await TodoList.deployed()` where TodoList is the name of the migration then `TodoList` 
+> Also ensure **Ganache** and **MetaMask** are running before proceeding.
 
-### properties of the smart contract can be viewed by `todolist.taskCount()` or `todolist.address`
+---
 
-### To see tasks deployed to the block: 
-### `task = await todoList.tasks(1)` and to see information about the task i.e `task.id.toNumber()` or `task.content`
+## 🔨 Common Commands
 
-## To Connect via Meta Mask
-### Get private key to account from Ganache by clicking key icon and copying it
-### Open Metamask go to settings > network > add network ! and there add your new network if it's a local node in RPC URL put: http://127.0.0.1:7545 and chose a name for it and save 
-### Select the newly createe account from dropdown to connect
-### In Meta Mask go to Accounts > Import Account and add the private key from Ganache
+| Action | Command |
+|---|---|
+| Compile the project | `truffle compile` |
+| Deploy to blockchain | `truffle migrate` |
+| Reset & redeploy | `truffle migrate --reset` |
+| Open Truffle console | `truffle console` |
+| Run unit tests | `truffle test` |
 
-## To run unit tests
-### `truffle test`
+> Use `truffle migrate --reset` whenever you add new functions to the smart contract.
 
-## When adding new functions to the blockchain: 
-### Run `truffle migrate --reset` to deploy a new copy of the smart contract
+---
+
+## 🔍 Inspecting the Smart Contract (Truffle Console)
+```js
+// Load the deployed contract
+todoList = await TodoList.deployed()
+
+// View contract properties
+todoList.taskCount()
+todoList.address
+
+// Access a specific task
+task = await todoList.tasks(1)
+task.id.toNumber()
+task.content
+```
+
+---
+
+## 🦊 Connecting MetaMask
+
+1. Open **Ganache** and click the 🔑 key icon next to an account — copy the private key.
+2. In MetaMask, go to **Settings → Networks → Add Network** and fill in:
+   - **Network Name:** (anything you like, e.g. `Ganache Local`)
+   - **RPC URL:** `http://127.0.0.1:7545`
+3. Save and select the new network from the dropdown.
+4. Go to **Accounts → Import Account** and paste the private key from Ganache.
